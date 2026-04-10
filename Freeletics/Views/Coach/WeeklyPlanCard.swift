@@ -2,6 +2,7 @@ import SwiftUI
 
 struct WeeklyPlanCard: View {
     let week: TrainingWeek
+    var onStartDay: ((TrainingDay) -> Void)?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -21,7 +22,7 @@ struct WeeklyPlanCard: View {
             }
 
             ForEach(week.days.sorted(by: { $0.dayOfWeek < $1.dayOfWeek })) { day in
-                DayRow(day: day)
+                DayRow(day: day, onTap: onStartDay)
             }
         }
         .padding()
@@ -32,32 +33,42 @@ struct WeeklyPlanCard: View {
 
 struct DayRow: View {
     let day: TrainingDay
+    var onTap: ((TrainingDay) -> Void)?
 
     var body: some View {
-        HStack {
-            Text(day.dayName)
-                .font(.subheadline)
-                .frame(width: 80, alignment: .leading)
-
-            if day.isRestDay {
-                Text("Rest")
+        Button {
+            if !day.isRestDay && !day.isCompleted {
+                onTap?(day)
+            }
+        } label: {
+            HStack {
+                Text(day.dayName)
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            } else {
-                Text(day.plannedExercises.map(\.exerciseName).joined(separator: ", "))
-                    .font(.caption)
-                    .lineLimit(1)
-            }
+                    .frame(width: 80, alignment: .leading)
 
-            Spacer()
+                if day.isRestDay {
+                    Text("Rest")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                } else {
+                    Text(day.plannedExercises.map(\.exerciseName).joined(separator: ", "))
+                        .font(.caption)
+                        .lineLimit(1)
+                }
 
-            if day.isCompleted {
-                Image(systemName: "checkmark.circle.fill")
-                    .foregroundStyle(.green)
-            } else if !day.isRestDay {
-                Image(systemName: "circle")
-                    .foregroundStyle(.secondary)
+                Spacer()
+
+                if day.isCompleted {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundStyle(.green)
+                } else if !day.isRestDay {
+                    Image(systemName: "play.circle.fill")
+                        .foregroundStyle(.orange)
+                }
             }
+            .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
+        .disabled(day.isRestDay || day.isCompleted)
     }
 }

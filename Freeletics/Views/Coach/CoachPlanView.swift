@@ -80,6 +80,8 @@ struct NoPlanView: View {
 
 struct PlanDetailView: View {
     let plan: TrainingPlan
+    @State private var selectedDay: TrainingDay?
+    @State private var showWorkout = false
 
     var body: some View {
         ScrollView {
@@ -103,17 +105,32 @@ struct PlanDetailView: View {
 
                 // Current week
                 if let week = plan.currentWeek {
-                    WeeklyPlanCard(week: week)
+                    WeeklyPlanCard(week: week) { day in
+                        selectedDay = day
+                        showWorkout = true
+                    }
                 }
 
                 // All weeks
                 ForEach(plan.weeks.sorted(by: { $0.weekNumber < $1.weekNumber })) { week in
                     if week.weekNumber != plan.currentWeekNumber {
-                        WeeklyPlanCard(week: week)
+                        WeeklyPlanCard(week: week) { day in
+                            selectedDay = day
+                            showWorkout = true
+                        }
                     }
                 }
             }
             .padding()
+        }
+        .fullScreenCover(isPresented: $showWorkout) {
+            if let day = selectedDay {
+                WorkoutSessionView(
+                    plannedExercises: day.plannedExercises.sorted(by: { $0.orderIndex < $1.orderIndex }),
+                    planWeekNumber: day.week?.weekNumber,
+                    planDayOfWeek: day.dayOfWeek
+                )
+            }
         }
     }
 }
