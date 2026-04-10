@@ -1,4 +1,4 @@
-# Freeletics — Open Source iOS Fitness Coach
+# Open-Coach — Open Source iOS Fitness Coach
 
 A local-first, open-source iOS fitness coaching app. AI-driven adaptive training plans, bodyweight-first exercise library, offline-capable workout sessions, and Apple Health integration.
 
