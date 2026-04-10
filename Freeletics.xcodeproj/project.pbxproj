@@ -1,0 +1,708 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05BB2D68661F9BE7B818CD92 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E830CE6051AB729E3A3FDF /* UserProfile.swift */; };
+		061A4E492459CB8FB71B970F /* CoachPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9A6C786B4913CBBD78DB64 /* CoachPlanView.swift */; };
+		0A0DD5BECFA7DBA688AA72EB /* TrainingDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8A4FF632FFC6E61C469B89 /* TrainingDaysView.swift */; };
+		0AB449ADACD0F6CF38EAA32C /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68802F361353D0E3A4C0C339 /* Exercise.swift */; };
+		126480DB1C58B78BC7435DED /* WeeklyAdaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2102C0249582613323CC6746 /* WeeklyAdaptation.swift */; };
+		1438E4FDF4938BC930CD8CF1 /* CustomWorkoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D7270CD3E29DA69DB382CA /* CustomWorkoutBuilder.swift */; };
+		1490809F68A075927A711D93 /* AudioCueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23868BB6F7880B12458F14A3 /* AudioCueManager.swift */; };
+		14D2DF3C6EFA29DC895FBDD0 /* RuleBasedCoach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918984771834AF355168BE4A /* RuleBasedCoach.swift */; };
+		1549F4A3917BE0036E864EC6 /* LLMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02744A395C3F4BF2664A9406 /* LLMClient.swift */; };
+		1A743AA65D9D6892C4C0FA5E /* RestPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F7A021B9F3B91EF50515DF /* RestPeriodView.swift */; };
+		1CA5E847E65E93F8CBEDA16A /* APIKeyConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB74FAEF40D55B55AF6A19E /* APIKeyConfigView.swift */; };
+		21A9748A31BDE873860B50BF /* ExerciseLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5B86AC03AAA63CD833B7A /* ExerciseLibraryView.swift */; };
+		268D5DD6CA3AEAED5C2610A6 /* WorkoutHistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43A6A4584D22C202B29BDDE /* WorkoutHistoryList.swift */; };
+		343FCE6E08B79A804DD732EB /* WorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4B7F3F1FBCBE096DD2FE6A /* WorkoutSession.swift */; };
+		37B74795362C2024216BF5D1 /* WorkoutTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC55DE7082F19840487769 /* WorkoutTimer.swift */; };
+		3B2CE0722EE7C8FAD4C8A508 /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500DB888720E5740FE423A51 /* ExerciseDetailView.swift */; };
+		4148BBA70459403ABB9A65A1 /* FitnessLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C17A2CABDAA90F2B6941AEC /* FitnessLevelView.swift */; };
+		438D19637EFEC7C34A819954 /* CoachEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B726E2ABC85C9B7E00EA7A4B /* CoachEngineTests.swift */; };
+		554BD2CB5DBFDF968F83C9B1 /* ProgressDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71984B7C878BBAD3BAF69346 /* ProgressDashboard.swift */; };
+		561D2A44D18CBCB9B421EF31 /* PromptTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC48216B325BCAC56B39AC81 /* PromptTemplates.swift */; };
+		5F0E07B93A89261B7686531C /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DDAE6C99CA3182E170817D /* OnboardingFlow.swift */; };
+		5F59B636AAB8C27D6BC8D81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50BD13434AF68911B48CDC33 /* Assets.xcassets */; };
+		611E8F862D3E2DE12A16348F /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D9BDC1A719A80D2B9AA21 /* HealthKitManager.swift */; };
+		631370D1A67EA4A4C0D8A43D /* WeeklyPlanCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C008D784BD8E3E5FD1C2090A /* WeeklyPlanCard.swift */; };
+		649B58F12DDBECBE5775A596 /* WeeklyAdaptationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2B3D41EAC507D128A1EE8 /* WeeklyAdaptationTests.swift */; };
+		67BCC88ACD58A177F957ADF7 /* WorkoutSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEDE8A0FF39CFC972161090 /* WorkoutSessionView.swift */; };
+		70FDA8DCE0C8C9AEC1820450 /* ExerciseSeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1268EB51DA9ED5F7A5322 /* ExerciseSeedData.swift */; };
+		767CC078DD8CCBED2AE80B6D /* DataExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9B54ABB0EE834FEFCCF10 /* DataExportView.swift */; };
+		77E5DB495F874EAC1AC37D53 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA352BB9ED67F3FD2DD239B5 /* KeychainHelper.swift */; };
+		82B01EFB6C0FE472EEBA6428 /* ExerciseSubstitutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79EAB49DC991AEAC9C89A48 /* ExerciseSubstitutorTests.swift */; };
+		84F4ACE3912856D06EEF18D8 /* FreeleticsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB00FC3F8B470A7F4272F37 /* FreeleticsApp.swift */; };
+		8A96A7B2054FD6BFA973F541 /* HealthSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532564D547200DB00C4B4584 /* HealthSettingsView.swift */; };
+		8BACAAEB829AF2DE9F4068BD /* LLMProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B780D1B84593E95C311BA /* LLMProvider.swift */; };
+		8E4E9201E7CF0816F7B11828 /* TrainingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F62349431046F196429068 /* TrainingPlan.swift */; };
+		A6FF97146750FDB34CA16025 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE2F504F1AE8657C70FE5B /* TimerView.swift */; };
+		B4D901C2645553B24F0652F3 /* JSONExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9622DA23C9E117134EE42D93 /* JSONExporter.swift */; };
+		D79FC117A561F2B0F11133C6 /* ExerciseSubstitutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9B6802442EC09304E2EE27 /* ExerciseSubstitutor.swift */; };
+		D9C15C7FEE30DB6C54A5B801 /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7C8250F334964F08437566 /* ExerciseCard.swift */; };
+		DDE747F94EC3BCD6CC61C748 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF4733C0804A274A66E812 /* SettingsView.swift */; };
+		E2977DD76A3805D775D3FF39 /* PostWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D159DA2E1FBFC7636191BE /* PostWorkoutView.swift */; };
+		E68A64F963D731AD05F301E2 /* GoalSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AD8ED3A92ECBBB9D85A45F /* GoalSelectionView.swift */; };
+		F96ACF447026EE7104F8B447 /* ExerciseSubstitution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D588DC9FF20458A9BFB3F7 /* ExerciseSubstitution.swift */; };
+		FC79CF109E6BF711C76806A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CE0D4C5C648290DF1012C /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5485B0C85AB2ED8B8BD6324B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7CCBEAAF64B673548CBA987 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 31F1C5F04D4B879B31CF6C8D;
+			remoteInfo = Freeletics;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02744A395C3F4BF2664A9406 /* LLMClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMClient.swift; sourceTree = "<group>"; };
+		1E4B7F3F1FBCBE096DD2FE6A /* WorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSession.swift; sourceTree = "<group>"; };
+		2102C0249582613323CC6746 /* WeeklyAdaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyAdaptation.swift; sourceTree = "<group>"; };
+		23868BB6F7880B12458F14A3 /* AudioCueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCueManager.swift; sourceTree = "<group>"; };
+		28D5B86AC03AAA63CD833B7A /* ExerciseLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLibraryView.swift; sourceTree = "<group>"; };
+		2E9A6C786B4913CBBD78DB64 /* CoachPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachPlanView.swift; sourceTree = "<group>"; };
+		30D159DA2E1FBFC7636191BE /* PostWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWorkoutView.swift; sourceTree = "<group>"; };
+		3BBE2F504F1AE8657C70FE5B /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		3C17A2CABDAA90F2B6941AEC /* FitnessLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessLevelView.swift; sourceTree = "<group>"; };
+		42EF4733C0804A274A66E812 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		500DB888720E5740FE423A51 /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
+		50BD13434AF68911B48CDC33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		52B2B3D41EAC507D128A1EE8 /* WeeklyAdaptationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyAdaptationTests.swift; sourceTree = "<group>"; };
+		532564D547200DB00C4B4584 /* HealthSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSettingsView.swift; sourceTree = "<group>"; };
+		57D588DC9FF20458A9BFB3F7 /* ExerciseSubstitution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSubstitution.swift; sourceTree = "<group>"; };
+		5C9B6802442EC09304E2EE27 /* ExerciseSubstitutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSubstitutor.swift; sourceTree = "<group>"; };
+		607CDFB71ABF1A9FFE4D59E7 /* Freeletics.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Freeletics.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68802F361353D0E3A4C0C339 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		71984B7C878BBAD3BAF69346 /* ProgressDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDashboard.swift; sourceTree = "<group>"; };
+		77DDAE6C99CA3182E170817D /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
+		7FB74FAEF40D55B55AF6A19E /* APIKeyConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyConfigView.swift; sourceTree = "<group>"; };
+		8A47F8E5875F744B1E1650D0 /* Freeletics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Freeletics.entitlements; sourceTree = "<group>"; };
+		8C8A4FF632FFC6E61C469B89 /* TrainingDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDaysView.swift; sourceTree = "<group>"; };
+		8FEDE8A0FF39CFC972161090 /* WorkoutSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionView.swift; sourceTree = "<group>"; };
+		918984771834AF355168BE4A /* RuleBasedCoach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleBasedCoach.swift; sourceTree = "<group>"; };
+		9622DA23C9E117134EE42D93 /* JSONExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONExporter.swift; sourceTree = "<group>"; };
+		96AD8ED3A92ECBBB9D85A45F /* GoalSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectionView.swift; sourceTree = "<group>"; };
+		98F7A021B9F3B91EF50515DF /* RestPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestPeriodView.swift; sourceTree = "<group>"; };
+		9B6D9BDC1A719A80D2B9AA21 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		A79EAB49DC991AEAC9C89A48 /* ExerciseSubstitutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSubstitutorTests.swift; sourceTree = "<group>"; };
+		B726E2ABC85C9B7E00EA7A4B /* CoachEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachEngineTests.swift; sourceTree = "<group>"; };
+		BC48216B325BCAC56B39AC81 /* PromptTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTemplates.swift; sourceTree = "<group>"; };
+		C008D784BD8E3E5FD1C2090A /* WeeklyPlanCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyPlanCard.swift; sourceTree = "<group>"; };
+		C9E830CE6051AB729E3A3FDF /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		CA7C8250F334964F08437566 /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
+		CCB00FC3F8B470A7F4272F37 /* FreeleticsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeleticsApp.swift; sourceTree = "<group>"; };
+		D2C1268EB51DA9ED5F7A5322 /* ExerciseSeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSeedData.swift; sourceTree = "<group>"; };
+		D3F9B54ABB0EE834FEFCCF10 /* DataExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExportView.swift; sourceTree = "<group>"; };
+		D43A6A4584D22C202B29BDDE /* WorkoutHistoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHistoryList.swift; sourceTree = "<group>"; };
+		D79B780D1B84593E95C311BA /* LLMProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMProvider.swift; sourceTree = "<group>"; };
+		DADC55DE7082F19840487769 /* WorkoutTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTimer.swift; sourceTree = "<group>"; };
+		E6D7270CD3E29DA69DB382CA /* CustomWorkoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWorkoutBuilder.swift; sourceTree = "<group>"; };
+		F3BD1BD51C5228151EF9BE41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F7F62349431046F196429068 /* TrainingPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingPlan.swift; sourceTree = "<group>"; };
+		F80C91CF747E8934A861116D /* FreeleticsTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FreeleticsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA352BB9ED67F3FD2DD239B5 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		FA7CE0D4C5C648290DF1012C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		09DFCFB02571D247E4437C22 = {
+			isa = PBXGroup;
+			children = (
+				D3954730D57595B3761D706D /* Freeletics */,
+				48ED7FB65A02489359D9B53A /* FreeleticsTests */,
+				DD990A179D31DE3B6226D88E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2752FA8C47F6CD3CAEBCD10C /* CoachEngine */ = {
+			isa = PBXGroup;
+			children = (
+				5C9B6802442EC09304E2EE27 /* ExerciseSubstitutor.swift */,
+				918984771834AF355168BE4A /* RuleBasedCoach.swift */,
+				2102C0249582613323CC6746 /* WeeklyAdaptation.swift */,
+			);
+			path = CoachEngine;
+			sourceTree = "<group>";
+		};
+		3BC69F5BC78EA789A1981952 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				68802F361353D0E3A4C0C339 /* Exercise.swift */,
+				57D588DC9FF20458A9BFB3F7 /* ExerciseSubstitution.swift */,
+				F7F62349431046F196429068 /* TrainingPlan.swift */,
+				C9E830CE6051AB729E3A3FDF /* UserProfile.swift */,
+				1E4B7F3F1FBCBE096DD2FE6A /* WorkoutSession.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3DD458568CA757208F72D7C6 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				9B6D9BDC1A719A80D2B9AA21 /* HealthKitManager.swift */,
+			);
+			path = HealthKit;
+			sourceTree = "<group>";
+		};
+		400885E75D4240D30C4412DA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				50BD13434AF68911B48CDC33 /* Assets.xcassets */,
+				8A47F8E5875F744B1E1650D0 /* Freeletics.entitlements */,
+				F3BD1BD51C5228151EF9BE41 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		48ED7FB65A02489359D9B53A /* FreeleticsTests */ = {
+			isa = PBXGroup;
+			children = (
+				B726E2ABC85C9B7E00EA7A4B /* CoachEngineTests.swift */,
+				A79EAB49DC991AEAC9C89A48 /* ExerciseSubstitutorTests.swift */,
+				52B2B3D41EAC507D128A1EE8 /* WeeklyAdaptationTests.swift */,
+			);
+			path = FreeleticsTests;
+			sourceTree = "<group>";
+		};
+		71A91EE80589D4D0193DEDE5 /* WorkoutEngine */ = {
+			isa = PBXGroup;
+			children = (
+				23868BB6F7880B12458F14A3 /* AudioCueManager.swift */,
+				DADC55DE7082F19840487769 /* WorkoutTimer.swift */,
+			);
+			path = WorkoutEngine;
+			sourceTree = "<group>";
+		};
+		7252F17C931C0A1DE9B391ED /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				3C17A2CABDAA90F2B6941AEC /* FitnessLevelView.swift */,
+				96AD8ED3A92ECBBB9D85A45F /* GoalSelectionView.swift */,
+				77DDAE6C99CA3182E170817D /* OnboardingFlow.swift */,
+				8C8A4FF632FFC6E61C469B89 /* TrainingDaysView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		76C5991FDBFE977AC41ACC8A /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				71984B7C878BBAD3BAF69346 /* ProgressDashboard.swift */,
+				D43A6A4584D22C202B29BDDE /* WorkoutHistoryList.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		7EEBC551046A82CC38524526 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7FB74FAEF40D55B55AF6A19E /* APIKeyConfigView.swift */,
+				D3F9B54ABB0EE834FEFCCF10 /* DataExportView.swift */,
+				532564D547200DB00C4B4584 /* HealthSettingsView.swift */,
+				42EF4733C0804A274A66E812 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		8CB2880BD727B94654E9EE78 /* LLM */ = {
+			isa = PBXGroup;
+			children = (
+				02744A395C3F4BF2664A9406 /* LLMClient.swift */,
+				D79B780D1B84593E95C311BA /* LLMProvider.swift */,
+				BC48216B325BCAC56B39AC81 /* PromptTemplates.swift */,
+			);
+			path = LLM;
+			sourceTree = "<group>";
+		};
+		99E26C24C67DE4E30BB0F6D0 /* DataExport */ = {
+			isa = PBXGroup;
+			children = (
+				9622DA23C9E117134EE42D93 /* JSONExporter.swift */,
+			);
+			path = DataExport;
+			sourceTree = "<group>";
+		};
+		9AEA229C65ACB755C2805769 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2752FA8C47F6CD3CAEBCD10C /* CoachEngine */,
+				99E26C24C67DE4E30BB0F6D0 /* DataExport */,
+				3DD458568CA757208F72D7C6 /* HealthKit */,
+				8CB2880BD727B94654E9EE78 /* LLM */,
+				71A91EE80589D4D0193DEDE5 /* WorkoutEngine */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A8B6BB1BDFFEAC26CADD5966 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D2C1268EB51DA9ED5F7A5322 /* ExerciseSeedData.swift */,
+				FA352BB9ED67F3FD2DD239B5 /* KeychainHelper.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B9C9492FD14FC3C191CBCD9B /* Coach */ = {
+			isa = PBXGroup;
+			children = (
+				2E9A6C786B4913CBBD78DB64 /* CoachPlanView.swift */,
+				C008D784BD8E3E5FD1C2090A /* WeeklyPlanCard.swift */,
+			);
+			path = Coach;
+			sourceTree = "<group>";
+		};
+		D24ECEC18CA191063A1A31C5 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				E6D7270CD3E29DA69DB382CA /* CustomWorkoutBuilder.swift */,
+				500DB888720E5740FE423A51 /* ExerciseDetailView.swift */,
+				30D159DA2E1FBFC7636191BE /* PostWorkoutView.swift */,
+				98F7A021B9F3B91EF50515DF /* RestPeriodView.swift */,
+				3BBE2F504F1AE8657C70FE5B /* TimerView.swift */,
+				8FEDE8A0FF39CFC972161090 /* WorkoutSessionView.swift */,
+			);
+			path = Workout;
+			sourceTree = "<group>";
+		};
+		D3954730D57595B3761D706D /* Freeletics */ = {
+			isa = PBXGroup;
+			children = (
+				E1F9F7B35E6B225C0AB2B379 /* App */,
+				3BC69F5BC78EA789A1981952 /* Models */,
+				400885E75D4240D30C4412DA /* Resources */,
+				9AEA229C65ACB755C2805769 /* Services */,
+				A8B6BB1BDFFEAC26CADD5966 /* Utilities */,
+				F3578FC611EFBA73463590D6 /* Views */,
+			);
+			path = Freeletics;
+			sourceTree = "<group>";
+		};
+		D63A54DE5002FF855154B942 /* ExerciseLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				CA7C8250F334964F08437566 /* ExerciseCard.swift */,
+				28D5B86AC03AAA63CD833B7A /* ExerciseLibraryView.swift */,
+			);
+			path = ExerciseLibrary;
+			sourceTree = "<group>";
+		};
+		DD990A179D31DE3B6226D88E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				607CDFB71ABF1A9FFE4D59E7 /* Freeletics.app */,
+				F80C91CF747E8934A861116D /* FreeleticsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1F9F7B35E6B225C0AB2B379 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FA7CE0D4C5C648290DF1012C /* ContentView.swift */,
+				CCB00FC3F8B470A7F4272F37 /* FreeleticsApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F3578FC611EFBA73463590D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B9C9492FD14FC3C191CBCD9B /* Coach */,
+				D63A54DE5002FF855154B942 /* ExerciseLibrary */,
+				7252F17C931C0A1DE9B391ED /* Onboarding */,
+				76C5991FDBFE977AC41ACC8A /* Progress */,
+				7EEBC551046A82CC38524526 /* Settings */,
+				D24ECEC18CA191063A1A31C5 /* Workout */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		31F1C5F04D4B879B31CF6C8D /* Freeletics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D0F89A4BDFD59DE545A0339 /* Build configuration list for PBXNativeTarget "Freeletics" */;
+			buildPhases = (
+				46C3508499F6AA83F4D07AC8 /* Sources */,
+				B08B4B1A93DB4EABDBC21AC0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Freeletics;
+			packageProductDependencies = (
+			);
+			productName = Freeletics;
+			productReference = 607CDFB71ABF1A9FFE4D59E7 /* Freeletics.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C0A412C989918A62805FA6D4 /* FreeleticsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1842CFFB9FAFF8B8ED5704CB /* Build configuration list for PBXNativeTarget "FreeleticsTests" */;
+			buildPhases = (
+				4387F387B9FCF9C0CB0D8FD0 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5DBDD6D3064FF89F854D2BEB /* PBXTargetDependency */,
+			);
+			name = FreeleticsTests;
+			packageProductDependencies = (
+			);
+			productName = FreeleticsTests;
+			productReference = F80C91CF747E8934A861116D /* FreeleticsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D7CCBEAAF64B673548CBA987 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					31F1C5F04D4B879B31CF6C8D = {
+						DevelopmentTeam = "";
+					};
+					C0A412C989918A62805FA6D4 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = 3EC38D08B342FAC5075365FC /* Build configuration list for PBXProject "Freeletics" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 09DFCFB02571D247E4437C22;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = DD990A179D31DE3B6226D88E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				31F1C5F04D4B879B31CF6C8D /* Freeletics */,
+				C0A412C989918A62805FA6D4 /* FreeleticsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B08B4B1A93DB4EABDBC21AC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F59B636AAB8C27D6BC8D81E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4387F387B9FCF9C0CB0D8FD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				438D19637EFEC7C34A819954 /* CoachEngineTests.swift in Sources */,
+				82B01EFB6C0FE472EEBA6428 /* ExerciseSubstitutorTests.swift in Sources */,
+				649B58F12DDBECBE5775A596 /* WeeklyAdaptationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46C3508499F6AA83F4D07AC8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CA5E847E65E93F8CBEDA16A /* APIKeyConfigView.swift in Sources */,
+				1490809F68A075927A711D93 /* AudioCueManager.swift in Sources */,
+				061A4E492459CB8FB71B970F /* CoachPlanView.swift in Sources */,
+				FC79CF109E6BF711C76806A6 /* ContentView.swift in Sources */,
+				1438E4FDF4938BC930CD8CF1 /* CustomWorkoutBuilder.swift in Sources */,
+				767CC078DD8CCBED2AE80B6D /* DataExportView.swift in Sources */,
+				0AB449ADACD0F6CF38EAA32C /* Exercise.swift in Sources */,
+				D9C15C7FEE30DB6C54A5B801 /* ExerciseCard.swift in Sources */,
+				3B2CE0722EE7C8FAD4C8A508 /* ExerciseDetailView.swift in Sources */,
+				21A9748A31BDE873860B50BF /* ExerciseLibraryView.swift in Sources */,
+				70FDA8DCE0C8C9AEC1820450 /* ExerciseSeedData.swift in Sources */,
+				F96ACF447026EE7104F8B447 /* ExerciseSubstitution.swift in Sources */,
+				D79FC117A561F2B0F11133C6 /* ExerciseSubstitutor.swift in Sources */,
+				4148BBA70459403ABB9A65A1 /* FitnessLevelView.swift in Sources */,
+				84F4ACE3912856D06EEF18D8 /* FreeleticsApp.swift in Sources */,
+				E68A64F963D731AD05F301E2 /* GoalSelectionView.swift in Sources */,
+				611E8F862D3E2DE12A16348F /* HealthKitManager.swift in Sources */,
+				8A96A7B2054FD6BFA973F541 /* HealthSettingsView.swift in Sources */,
+				B4D901C2645553B24F0652F3 /* JSONExporter.swift in Sources */,
+				77E5DB495F874EAC1AC37D53 /* KeychainHelper.swift in Sources */,
+				1549F4A3917BE0036E864EC6 /* LLMClient.swift in Sources */,
+				8BACAAEB829AF2DE9F4068BD /* LLMProvider.swift in Sources */,
+				5F0E07B93A89261B7686531C /* OnboardingFlow.swift in Sources */,
+				E2977DD76A3805D775D3FF39 /* PostWorkoutView.swift in Sources */,
+				554BD2CB5DBFDF968F83C9B1 /* ProgressDashboard.swift in Sources */,
+				561D2A44D18CBCB9B421EF31 /* PromptTemplates.swift in Sources */,
+				1A743AA65D9D6892C4C0FA5E /* RestPeriodView.swift in Sources */,
+				14D2DF3C6EFA29DC895FBDD0 /* RuleBasedCoach.swift in Sources */,
+				DDE747F94EC3BCD6CC61C748 /* SettingsView.swift in Sources */,
+				A6FF97146750FDB34CA16025 /* TimerView.swift in Sources */,
+				0A0DD5BECFA7DBA688AA72EB /* TrainingDaysView.swift in Sources */,
+				8E4E9201E7CF0816F7B11828 /* TrainingPlan.swift in Sources */,
+				05BB2D68661F9BE7B818CD92 /* UserProfile.swift in Sources */,
+				126480DB1C58B78BC7435DED /* WeeklyAdaptation.swift in Sources */,
+				631370D1A67EA4A4C0D8A43D /* WeeklyPlanCard.swift in Sources */,
+				268D5DD6CA3AEAED5C2610A6 /* WorkoutHistoryList.swift in Sources */,
+				343FCE6E08B79A804DD732EB /* WorkoutSession.swift in Sources */,
+				67BCC88ACD58A177F957ADF7 /* WorkoutSessionView.swift in Sources */,
+				37B74795362C2024216BF5D1 /* WorkoutTimer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5DBDD6D3064FF89F854D2BEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 31F1C5F04D4B879B31CF6C8D /* Freeletics */;
+			targetProxy = 5485B0C85AB2ED8B8BD6324B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		01590FF5BAA85D44BF147189 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.freeletics.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Freeletics.app/Freeletics";
+			};
+			name = Debug;
+		};
+		0D76F2953DDE2FBEF066BE79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Freeletics/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		1832571C8617C8AE0C023C57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Freeletics/Resources/Freeletics.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Freeletics/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.freeletics.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		57A583AD1EF5885A6BC56114 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Freeletics/Resources/Freeletics.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Freeletics/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.freeletics.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EE92C432070C3EC7A6F3390C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.freeletics.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Freeletics.app/Freeletics";
+			};
+			name = Release;
+		};
+		F7B4C6F455646B3406B18321 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Freeletics/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1842CFFB9FAFF8B8ED5704CB /* Build configuration list for PBXNativeTarget "FreeleticsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01590FF5BAA85D44BF147189 /* Debug */,
+				EE92C432070C3EC7A6F3390C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3EC38D08B342FAC5075365FC /* Build configuration list for PBXProject "Freeletics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7B4C6F455646B3406B18321 /* Debug */,
+				0D76F2953DDE2FBEF066BE79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7D0F89A4BDFD59DE545A0339 /* Build configuration list for PBXNativeTarget "Freeletics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1832571C8617C8AE0C023C57 /* Debug */,
+				57A583AD1EF5885A6BC56114 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D7CCBEAAF64B673548CBA987 /* Project object */;
+}
