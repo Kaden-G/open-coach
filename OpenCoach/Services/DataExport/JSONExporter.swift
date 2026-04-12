@@ -112,7 +112,7 @@ enum JSONExporter {
         let data = try encoder.encode(exportData)
 
         let tempDir = FileManager.default.temporaryDirectory
-        let fileURL = tempDir.appendingPathComponent("freeletics-export-\(dateFormatter.string(from: Date())).json")
+        let fileURL = tempDir.appendingPathComponent("open-coach-export-\(dateFormatter.string(from: Date())).json")
         try data.write(to: fileURL)
 
         return fileURL

@@ -2,7 +2,7 @@ import Foundation
 
 enum PromptTemplates {
     static let coachSystemPrompt = """
-    You are an expert fitness coach AI for the Freeletics app. You create personalized \
+    You are an expert fitness coach AI for the Open-Coach app. You create personalized \
     bodyweight training plans based on the user's fitness level, goals, and constraints.
 
     Your responses must be valid JSON matching the expected schema. Do not include markdown \

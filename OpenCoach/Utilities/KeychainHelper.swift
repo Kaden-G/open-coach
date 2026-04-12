@@ -11,7 +11,7 @@ enum KeychainHelper {
         case unexpectedStatus(OSStatus)
     }
 
-    static func save(key: String, value: String, service: String = "com.freeletics") throws {
+    static func save(key: String, value: String, service: String = "com.open-coach") throws {
         guard let data = value.data(using: .utf8) else { return }
 
         // Delete existing item first
@@ -36,7 +36,7 @@ enum KeychainHelper {
         }
     }
 
-    static func read(key: String, service: String = "com.freeletics") -> String? {
+    static func read(key: String, service: String = "com.open-coach") -> String? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: key,
@@ -54,7 +54,7 @@ enum KeychainHelper {
         return String(data: data, encoding: .utf8)
     }
 
-    static func delete(key: String, service: String = "com.freeletics") {
+    static func delete(key: String, service: String = "com.open-coach") {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: key,

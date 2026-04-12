@@ -61,7 +61,7 @@ final class HealthKitManager {
             duration: duration,
             totalEnergyBurned: HKQuantity(unit: .kilocalorie(), doubleValue: activeEnergy),
             totalDistance: nil,
-            metadata: [HKMetadataKeyWorkoutBrandName: "Freeletics"]
+            metadata: [HKMetadataKeyWorkoutBrandName: "Open-Coach"]
         )
 
         try await healthStore.save(workout)

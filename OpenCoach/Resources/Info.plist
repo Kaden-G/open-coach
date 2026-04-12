@@ -11,7 +11,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Freeletics</string>
+	<string>Open-Coach</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -36,9 +36,9 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Freeletics reads your heart rate, HRV, and sleep data to personalize your training plan and optimize recovery recommendations.</string>
+	<string>Open-Coach reads your heart rate, HRV, and sleep data to personalize your training plan and optimize recovery recommendations.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Freeletics saves your completed workouts to Apple Health so you can track all your fitness activity in one place.</string>
+	<string>Open-Coach saves your completed workouts to Apple Health so you can track all your fitness activity in one place.</string>
 
 </dict>
 </plist>

@@ -1,6 +1,6 @@
 import Testing
 import Foundation
-@testable import Freeletics
+@testable import OpenCoach
 
 @Suite("RuleBasedCoach Tests")
 struct CoachEngineTests {

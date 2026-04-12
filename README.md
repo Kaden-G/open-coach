@@ -11,7 +11,7 @@ A local-first, open-source iOS fitness coaching app. AI-driven adaptive training
 - **Adaptive Training Plans** — 4-12 week plans that adapt weekly based on your completion rate and RPE feedback. One-tap "Adapt Next Week" adjusts volume and intensity using the built-in adaptation algorithm.
 - **Workout Timer** — Accurate to ±100ms even during app backgrounding, calls, and screen lock.
 - **Apple Health Integration** — Read recovery signals (HRV, resting HR, sleep). Write completed workouts.
-- **Data Export** — One-tap JSON export of all your data. Human-readable with a bundled [JSON Schema](Freeletics/Resources/export-schema.json).
+- **Data Export** — One-tap JSON export of all your data. Human-readable with a bundled [JSON Schema](OpenCoach/Resources/export-schema.json).
 - **Privacy by Default** — All data stays on-device. No analytics, no tracking, no third-party data sharing.
 
 ## Requirements
@@ -26,10 +26,10 @@ A local-first, open-source iOS fitness coaching app. AI-driven adaptive training
 
 ```bash
 git clone <repo-url>
-cd Freeletics
+cd Open-Coach
 brew install xcodegen  # if not installed
 xcodegen generate
-open Freeletics.xcodeproj
+open OpenCoach.xcodeproj
 ```
 
 Build and run on a simulator or device. The app works fully offline with rule-based coaching from the first launch.
@@ -64,7 +64,7 @@ The one-tap export produces a JSON file with three top-level sections:
 - **workoutSessions** — Each session with date, duration, RPE, completion status, and per-exercise details (sets, reps, duration, substitution flag)
 - **trainingPlans** — Start date, total weeks, goal, status, completion percentage
 
-A full [JSON Schema](Freeletics/Resources/export-schema.json) (draft 2020-12) is included in the repository.
+A full [JSON Schema](OpenCoach/Resources/export-schema.json) (draft 2020-12) is included in the repository.
 
 ## License
 
