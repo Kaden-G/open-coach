@@ -3,8 +3,10 @@ import SwiftUI
 struct ExerciseDetailView: View {
     let exercise: PlannedExercise
     let currentSet: Int
-    let onComplete: () -> Void
+    let onComplete: (Int) -> Void
     let onSubstitute: () -> Void
+
+    @State private var actualReps: Int = 0
 
     var body: some View {
         VStack(spacing: 24) {
@@ -21,11 +23,31 @@ struct ExerciseDetailView: View {
 
             // Rep or time target
             if exercise.reps > 0 {
-                VStack {
-                    Text("\(exercise.reps)")
-                        .font(.system(size: 72, weight: .black))
-                        .foregroundStyle(.orange)
-                    Text("reps")
+                VStack(spacing: 8) {
+                    Text("Target: \(exercise.reps) reps")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+
+                    HStack(spacing: 20) {
+                        Button { actualReps = max(0, actualReps - 1) } label: {
+                            Image(systemName: "minus.circle.fill")
+                                .font(.title)
+                                .foregroundStyle(.orange.opacity(0.7))
+                        }
+
+                        Text("\(actualReps)")
+                            .font(.system(size: 72, weight: .black))
+                            .foregroundStyle(.orange)
+                            .frame(minWidth: 100)
+
+                        Button { actualReps = min(100, actualReps + 1) } label: {
+                            Image(systemName: "plus.circle.fill")
+                                .font(.title)
+                                .foregroundStyle(.orange.opacity(0.7))
+                        }
+                    }
+
+                    Text("reps completed")
                         .font(.title3)
                         .foregroundStyle(.secondary)
                 }
@@ -45,7 +67,7 @@ struct ExerciseDetailView: View {
             // Actions
             VStack(spacing: 12) {
                 Button {
-                    onComplete()
+                    onComplete(exercise.reps > 0 ? actualReps : exercise.durationSeconds)
                 } label: {
                     Text("Done")
                         .font(.headline)
@@ -55,7 +77,6 @@ struct ExerciseDetailView: View {
                 .buttonStyle(.borderedProminent)
                 .tint(.orange)
 
-                // AI-003: "Can't do this exercise" button
                 Button {
                     onSubstitute()
                 } label: {
@@ -66,6 +87,12 @@ struct ExerciseDetailView: View {
             }
             .padding(.horizontal)
             .padding(.bottom, 32)
+        }
+        .onAppear {
+            actualReps = exercise.reps
+        }
+        .onChange(of: currentSet) {
+            actualReps = exercise.reps
         }
     }
 }

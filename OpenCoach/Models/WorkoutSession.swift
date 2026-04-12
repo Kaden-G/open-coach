@@ -38,7 +38,12 @@ final class WorkoutSession {
     }
 
     var totalVolume: Int {
-        completedExercises.reduce(0) { $0 + ($1.completedSets * $1.completedReps) }
+        completedExercises.reduce(0) { total, exercise in
+            if exercise.setRecords.isEmpty {
+                return total + (exercise.completedSets * exercise.completedReps)
+            }
+            return total + exercise.setRecords.reduce(0) { $0 + $1.actualReps }
+        }
     }
 
     var displayName: String {
@@ -63,17 +68,22 @@ final class CompletedExercise {
     var exerciseName: String
     var completedSets: Int
     var completedReps: Int
+    var plannedSets: Int
+    var plannedReps: Int
     var durationSeconds: Int
     var orderIndex: Int
     var wasSubstituted: Bool
     var originalExerciseId: String?
     var session: WorkoutSession?
+    @Relationship(deleteRule: .cascade) var setRecords: [SetRecord]
 
     init(
         exerciseId: String,
         exerciseName: String,
         completedSets: Int,
         completedReps: Int,
+        plannedSets: Int = 0,
+        plannedReps: Int = 0,
         durationSeconds: Int = 0,
         orderIndex: Int = 0,
         wasSubstituted: Bool = false,
@@ -83,9 +93,12 @@ final class CompletedExercise {
         self.exerciseName = exerciseName
         self.completedSets = completedSets
         self.completedReps = completedReps
+        self.plannedSets = plannedSets
+        self.plannedReps = plannedReps
         self.durationSeconds = durationSeconds
         self.orderIndex = orderIndex
         self.wasSubstituted = wasSubstituted
         self.originalExerciseId = originalExerciseId
+        self.setRecords = []
     }
 }

@@ -37,8 +37,17 @@ enum JSONExporter {
         let exerciseName: String
         let completedSets: Int
         let completedReps: Int
+        let plannedSets: Int
+        let plannedReps: Int
         let durationSeconds: Int
         let wasSubstituted: Bool
+        let setRecords: [SetRecordExport]
+    }
+
+    struct SetRecordExport: Codable {
+        let setNumber: Int
+        let plannedReps: Int
+        let actualReps: Int
     }
 
     struct PlanExport: Codable {
@@ -82,8 +91,17 @@ enum JSONExporter {
                         exerciseName: ex.exerciseName,
                         completedSets: ex.completedSets,
                         completedReps: ex.completedReps,
+                        plannedSets: ex.plannedSets,
+                        plannedReps: ex.plannedReps,
                         durationSeconds: ex.durationSeconds,
-                        wasSubstituted: ex.wasSubstituted
+                        wasSubstituted: ex.wasSubstituted,
+                        setRecords: ex.setRecords.sorted(by: { $0.setNumber < $1.setNumber }).map { record in
+                            SetRecordExport(
+                                setNumber: record.setNumber,
+                                plannedReps: record.plannedReps,
+                                actualReps: record.actualReps
+                            )
+                        }
                     )
                 }
             )
@@ -100,7 +118,7 @@ enum JSONExporter {
         }
 
         let exportData = ExportData(
-            exportVersion: "1.0.0",
+            exportVersion: "1.1.0",
             exportDate: dateFormatter.string(from: Date()),
             profile: profileExport,
             workoutSessions: sessionExports,

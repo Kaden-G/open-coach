@@ -17,6 +17,7 @@ struct WorkoutSessionView: View {
     @State private var timer = WorkoutTimer()
     @State private var showPostWorkout = false
     @State private var showSubstitution = false
+    @State private var currentSetRecords: [SetRecord] = []
 
     init(plannedExercises: [PlannedExercise], planWeekNumber: Int? = nil, planDayOfWeek: Int? = nil) {
         self.plannedExercises = plannedExercises
@@ -50,7 +51,7 @@ struct WorkoutSessionView: View {
                         ExerciseDetailView(
                             exercise: exercise,
                             currentSet: currentSet,
-                            onComplete: { completeSet() },
+                            onComplete: { actualReps in completeSet(actualReps: actualReps) },
                             onSubstitute: { showSubstitution = true }
                         )
                     }
@@ -85,22 +86,33 @@ struct WorkoutSessionView: View {
         }
     }
 
-    private func completeSet() {
+    private func completeSet(actualReps: Int) {
         guard let exercise = currentExercise else { return }
+
+        let record = SetRecord(
+            setNumber: currentSet,
+            plannedReps: exercise.reps,
+            actualReps: actualReps
+        )
+        currentSetRecords.append(record)
 
         if currentSet >= exercise.sets {
             // Exercise complete
             let completed = CompletedExercise(
                 exerciseId: exercise.exerciseId,
                 exerciseName: exercise.exerciseName,
-                completedSets: exercise.sets,
+                completedSets: currentSetRecords.count,
                 completedReps: exercise.reps,
+                plannedSets: exercise.sets,
+                plannedReps: exercise.reps,
                 durationSeconds: exercise.durationSeconds,
                 orderIndex: currentIndex
             )
+            completed.setRecords = currentSetRecords
             session.completedExercises.append(completed)
             AudioCueManager.shared.playSetComplete()
 
+            currentSetRecords = []
             currentSet = 1
             currentIndex += 1
         } else {

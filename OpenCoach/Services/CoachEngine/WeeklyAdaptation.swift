@@ -27,8 +27,10 @@ struct WeeklyAdaptation {
         currentWeek.completionRate = completionRate
         currentWeek.averageRPE = averageRPE
 
+        let repCompletionRate = calculateRepCompletionRate(sessions: weekSessions)
+
         // Determine volume adjustment
-        let adjustment = volumeAdjustment(completionRate: completionRate, averageRPE: averageRPE)
+        let adjustment = volumeAdjustment(completionRate: completionRate, averageRPE: averageRPE, repCompletionRate: repCompletionRate)
 
         // Apply adjustment to next week (capped at 10% increase)
         let newMultiplier = currentWeek.volumeMultiplier * (1.0 + adjustment)
@@ -63,23 +65,46 @@ struct WeeklyAdaptation {
         return Double(rpeSessions.reduce(0, +)) / Double(rpeSessions.count)
     }
 
+    private func calculateRepCompletionRate(sessions: [WorkoutSession]) -> Double {
+        var totalPlanned = 0
+        var totalActual = 0
+
+        for session in sessions {
+            for exercise in session.completedExercises {
+                if exercise.setRecords.isEmpty {
+                    totalPlanned += exercise.completedSets * exercise.completedReps
+                    totalActual += exercise.completedSets * exercise.completedReps
+                } else {
+                    for record in exercise.setRecords {
+                        totalPlanned += record.plannedReps
+                        totalActual += record.actualReps
+                    }
+                }
+            }
+        }
+
+        guard totalPlanned > 0 else { return 1.0 }
+        return Double(totalActual) / Double(totalPlanned)
+    }
+
     // MARK: - Volume Adjustment Logic
 
-    private func volumeAdjustment(completionRate: Double, averageRPE: Double) -> Double {
-        // High RPE (>8) or low completion (<70%) → decrease volume
-        // Moderate RPE and good completion → increase volume
-        // Cap increases at 10%
+    private func volumeAdjustment(completionRate: Double, averageRPE: Double, repCompletionRate: Double) -> Double {
+        // Rep completion < 80% is a strong signal to reduce regardless of RPE
+        if repCompletionRate < 0.8 && completionRate >= 0.7 {
+            return -0.05
+        }
 
         if completionRate < 0.5 {
-            return -0.15 // Significant reduction
+            return -0.15
         } else if completionRate < 0.7 || averageRPE > 8.5 {
-            return -0.05 // Mild reduction
+            return -0.05
         } else if averageRPE > 7.5 {
-            return 0.0 // Maintain
-        } else if completionRate >= 0.9 && averageRPE < 6.0 {
-            return 0.10 // Maximum increase
+            return 0.0
+        } else if completionRate >= 0.9 && averageRPE < 6.0 && repCompletionRate >= 0.95 {
+            return 0.10
         } else if completionRate >= 0.8 {
-            return 0.05 // Moderate increase
+            return 0.05
         } else {
             return 0.0
         }

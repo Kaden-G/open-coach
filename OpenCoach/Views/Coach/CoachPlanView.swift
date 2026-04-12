@@ -172,7 +172,7 @@ struct PlanDetailView: View {
         }
         .fullScreenCover(isPresented: $showWorkout) {
             if let day = selectedDay {
-                WorkoutSessionView(
+                WorkoutOverviewView(
                     plannedExercises: day.plannedExercises.sorted(by: { $0.orderIndex < $1.orderIndex }),
                     planWeekNumber: day.week?.weekNumber,
                     planDayOfWeek: day.dayOfWeek

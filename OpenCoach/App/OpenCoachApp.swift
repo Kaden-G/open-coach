@@ -14,6 +14,7 @@ struct OpenCoachApp: App {
             WorkoutSession.self,
             CompletedExercise.self,
             ExerciseSubstitution.self,
+            SetRecord.self,
         ])
         let modelConfiguration = ModelConfiguration(
             schema: schema,

@@ -54,6 +54,47 @@ struct WeeklyAdaptationTests {
         #expect(after <= before, "Volume should decrease with low completion rate")
     }
 
+    @Test("Low rep completion rate triggers volume reduction even with moderate RPE")
+    func lowRepCompletionReduction() {
+        let adaptation = WeeklyAdaptation()
+        let plan = makeTestPlan()
+
+        // Sessions with moderate RPE but consistently falling short on reps
+        let session = makeSession(rpe: 6, completed: true, weekNumber: 1)
+        let exercise = CompletedExercise(
+            exerciseId: "pushup",
+            exerciseName: "Push-Up",
+            completedSets: 3,
+            completedReps: 15,
+            plannedSets: 3,
+            plannedReps: 15
+        )
+        exercise.setRecords = [
+            SetRecord(setNumber: 1, plannedReps: 15, actualReps: 10),
+            SetRecord(setNumber: 2, plannedReps: 15, actualReps: 8),
+            SetRecord(setNumber: 3, plannedReps: 15, actualReps: 7),
+        ]
+        session.completedExercises.append(exercise)
+
+        // Add enough sessions to meet completion rate threshold
+        let session2 = makeSession(rpe: 6, completed: true, weekNumber: 1)
+        session2.completedExercises.append(CompletedExercise(
+            exerciseId: "squat", exerciseName: "Squat",
+            completedSets: 3, completedReps: 15, plannedSets: 3, plannedReps: 15
+        ))
+        let session3 = makeSession(rpe: 6, completed: true, weekNumber: 1)
+        session3.completedExercises.append(CompletedExercise(
+            exerciseId: "plank", exerciseName: "Plank",
+            completedSets: 3, completedReps: 15, plannedSets: 3, plannedReps: 15
+        ))
+
+        let before = plan.weeks[1].volumeMultiplier
+        adaptation.adaptNextWeek(plan: plan, completedSessions: [session, session2, session3], exercises: [])
+        let after = plan.weeks[1].volumeMultiplier
+
+        #expect(after <= before, "Volume should decrease when rep completion rate is low")
+    }
+
     // MARK: - Helpers
 
     private func makeTestPlan() -> TrainingPlan {

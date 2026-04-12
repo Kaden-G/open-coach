@@ -112,7 +112,7 @@
     },
     "completedExercise": {
       "type": "object",
-      "required": ["exerciseId", "exerciseName", "completedSets", "completedReps", "durationSeconds", "wasSubstituted"],
+      "required": ["exerciseId", "exerciseName", "completedSets", "completedReps", "plannedSets", "plannedReps", "durationSeconds", "wasSubstituted", "setRecords"],
       "properties": {
         "exerciseId": {
           "type": "string",
@@ -130,7 +130,17 @@
         "completedReps": {
           "type": "integer",
           "minimum": 0,
-          "description": "Total reps completed across all sets."
+          "description": "Planned reps per set (kept for backward compatibility)."
+        },
+        "plannedSets": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of sets originally prescribed."
+        },
+        "plannedReps": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Reps per set originally prescribed."
         },
         "durationSeconds": {
           "type": "integer",
@@ -140,6 +150,32 @@
         "wasSubstituted": {
           "type": "boolean",
           "description": "True if this exercise was substituted for the originally planned exercise."
+        },
+        "setRecords": {
+          "type": "array",
+          "description": "Per-set tracking data with planned vs actual reps.",
+          "items": { "$ref": "#/$defs/setRecord" }
+        }
+      }
+    },
+    "setRecord": {
+      "type": "object",
+      "required": ["setNumber", "plannedReps", "actualReps"],
+      "properties": {
+        "setNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "1-based set index."
+        },
+        "plannedReps": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Reps prescribed for this set."
+        },
+        "actualReps": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Reps actually performed."
         }
       }
     },

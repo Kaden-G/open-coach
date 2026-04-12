@@ -41,6 +41,32 @@ struct PostWorkoutView: View {
                         )
                     }
 
+                    // Planned vs Actual breakdown
+                    if session.completedExercises.contains(where: { !$0.setRecords.isEmpty }) {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Performance")
+                                .font(.headline)
+
+                            ForEach(session.completedExercises.sorted(by: { $0.orderIndex < $1.orderIndex }), id: \.exerciseId) { exercise in
+                                if !exercise.setRecords.isEmpty {
+                                    HStack {
+                                        Text(exercise.exerciseName)
+                                            .font(.subheadline)
+                                        Spacer()
+                                        let actual = exercise.setRecords.reduce(0) { $0 + $1.actualReps }
+                                        let planned = exercise.setRecords.reduce(0) { $0 + $1.plannedReps }
+                                        Text("\(actual)/\(planned) reps")
+                                            .font(.subheadline.bold())
+                                            .foregroundStyle(actual >= planned ? .green : .orange)
+                                    }
+                                }
+                            }
+                        }
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+
                     // RPE Slider
                     VStack(alignment: .leading, spacing: 8) {
                         Text("How hard was it?")
