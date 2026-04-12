@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/open-coach/export-schema/v1.0.0",
+  "title": "Open-Coach Data Export",
+  "description": "Schema for the JSON export produced by Open-Coach. Contains user profile, workout sessions, and training plans.",
+  "type": "object",
+  "required": ["exportVersion", "exportDate", "workoutSessions", "trainingPlans"],
+  "properties": {
+    "exportVersion": {
+      "type": "string",
+      "description": "Schema version of this export file.",
+      "const": "1.0.0"
+    },
+    "exportDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the export was generated."
+    },
+    "profile": {
+      "$ref": "#/$defs/profile",
+      "description": "User profile data. Null if no profile exists."
+    },
+    "workoutSessions": {
+      "type": "array",
+      "description": "All completed and in-progress workout sessions.",
+      "items": { "$ref": "#/$defs/workoutSession" }
+    },
+    "trainingPlans": {
+      "type": "array",
+      "description": "All training plans (active, completed, or paused).",
+      "items": { "$ref": "#/$defs/trainingPlan" }
+    }
+  },
+  "$defs": {
+    "profile": {
+      "type": "object",
+      "required": ["fitnessLevel", "primaryGoal", "trainingDaysPerWeek", "injuries", "createdAt"],
+      "properties": {
+        "fitnessLevel": {
+          "type": "string",
+          "enum": ["beginner", "intermediate", "athlete"],
+          "description": "User's self-assessed fitness level."
+        },
+        "primaryGoal": {
+          "type": "string",
+          "enum": ["fatLoss", "strength", "endurance"],
+          "description": "User's primary training goal."
+        },
+        "trainingDaysPerWeek": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 7,
+          "description": "Number of training days per week."
+        },
+        "injuries": {
+          "type": "array",
+          "description": "Body areas the user has flagged as injured or sensitive.",
+          "items": {
+            "type": "string",
+            "enum": ["lowerBack", "knees", "shoulders", "wrists", "ankles", "neck", "none"]
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp when the profile was created."
+        }
+      }
+    },
+    "workoutSession": {
+      "type": "object",
+      "required": ["date", "durationSeconds", "completed", "isCustomWorkout", "exercises"],
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp when the session started."
+        },
+        "durationSeconds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total session duration in seconds."
+        },
+        "rpe": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "maximum": 10,
+          "description": "Rate of Perceived Exertion (1-10). Null if not recorded."
+        },
+        "notes": {
+          "type": ["string", "null"],
+          "description": "Optional user notes about the session."
+        },
+        "completed": {
+          "type": "boolean",
+          "description": "Whether the session was fully completed."
+        },
+        "isCustomWorkout": {
+          "type": "boolean",
+          "description": "True if the workout was user-built rather than plan-generated."
+        },
+        "customWorkoutName": {
+          "type": ["string", "null"],
+          "description": "Name of the custom workout, if applicable."
+        },
+        "exercises": {
+          "type": "array",
+          "description": "Exercises performed during this session.",
+          "items": { "$ref": "#/$defs/completedExercise" }
+        }
+      }
+    },
+    "completedExercise": {
+      "type": "object",
+      "required": ["exerciseId", "exerciseName", "completedSets", "completedReps", "durationSeconds", "wasSubstituted"],
+      "properties": {
+        "exerciseId": {
+          "type": "string",
+          "description": "Unique identifier for the exercise (e.g., 'pushup', 'squat')."
+        },
+        "exerciseName": {
+          "type": "string",
+          "description": "Human-readable exercise name."
+        },
+        "completedSets": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of sets completed."
+        },
+        "completedReps": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total reps completed across all sets."
+        },
+        "durationSeconds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Duration in seconds (for timed exercises)."
+        },
+        "wasSubstituted": {
+          "type": "boolean",
+          "description": "True if this exercise was substituted for the originally planned exercise."
+        }
+      }
+    },
+    "trainingPlan": {
+      "type": "object",
+      "required": ["startDate", "totalWeeks", "goal", "status", "completionPercentage"],
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp when the plan started."
+        },
+        "totalWeeks": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Total number of weeks in the plan."
+        },
+        "goal": {
+          "type": "string",
+          "enum": ["fatLoss", "strength", "endurance"],
+          "description": "Training goal for this plan."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "completed", "paused"],
+          "description": "Current plan status."
+        },
+        "completionPercentage": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Fraction of the plan completed (0.0 to 1.0)."
+        }
+      }
+    }
+  }
+}

@@ -6,6 +6,7 @@ struct CoachPlanView: View {
     @Query private var plans: [TrainingPlan]
     @Query private var profiles: [UserProfile]
     @State private var isGenerating = false
+    @State private var planSource: LLMCoach.Source?
 
     var activePlan: TrainingPlan? {
         plans.first { $0.status == .active }
@@ -15,7 +16,19 @@ struct CoachPlanView: View {
         NavigationStack {
             Group {
                 if let plan = activePlan {
-                    PlanDetailView(plan: plan)
+                    VStack(spacing: 0) {
+                        if let source = planSource {
+                            HStack {
+                                Image(systemName: source == .llm ? "brain" : "gearshape.2")
+                                    .font(.caption)
+                                Text(source.rawValue)
+                                    .font(.caption)
+                            }
+                            .foregroundStyle(.secondary)
+                            .padding(.vertical, 4)
+                        }
+                        PlanDetailView(plan: plan)
+                    }
                 } else {
                     NoPlanView(isGenerating: $isGenerating) {
                         generatePlan()
@@ -31,11 +44,17 @@ struct CoachPlanView: View {
         isGenerating = true
 
         let exercises = (try? modelContext.fetch(FetchDescriptor<Exercise>())) ?? []
-        let coach = RuleBasedCoach()
-        let plan = coach.generatePlan(profile: profile, exercises: exercises)
-        modelContext.insert(plan)
 
-        isGenerating = false
+        Task {
+            let coach = LLMCoach()
+            let result = await coach.generatePlan(profile: profile, exercises: exercises)
+
+            await MainActor.run {
+                modelContext.insert(result.plan)
+                planSource = result.source
+                isGenerating = false
+            }
+        }
     }
 }
 
@@ -80,8 +99,19 @@ struct NoPlanView: View {
 
 struct PlanDetailView: View {
     let plan: TrainingPlan
+    @Environment(\.modelContext) private var modelContext
+    @Query private var sessions: [WorkoutSession]
     @State private var selectedDay: TrainingDay?
     @State private var showWorkout = false
+    @State private var showAdaptationAlert = false
+    @State private var adaptationMessage = ""
+
+    private var canAdaptNextWeek: Bool {
+        guard plan.currentWeekNumber < plan.totalWeeks else { return false }
+        guard let currentWeek = plan.currentWeek else { return false }
+        let weekSessions = sessions.filter { $0.planWeekNumber == currentWeek.weekNumber && $0.completed }
+        return !weekSessions.isEmpty && currentWeek.completionRate == nil
+    }
 
     var body: some View {
         ScrollView {
@@ -103,6 +133,18 @@ struct PlanDetailView: View {
                 .background(Color(.systemGray6))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
 
+                // Adapt next week button
+                if canAdaptNextWeek {
+                    Button {
+                        adaptNextWeek()
+                    } label: {
+                        Label("Adapt Next Week", systemImage: "arrow.triangle.2.circlepath")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.orange)
+                }
+
                 // Current week
                 if let week = plan.currentWeek {
                     WeeklyPlanCard(week: week) { day in
@@ -123,6 +165,11 @@ struct PlanDetailView: View {
             }
             .padding()
         }
+        .alert("Plan Adapted", isPresented: $showAdaptationAlert) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(adaptationMessage)
+        }
         .fullScreenCover(isPresented: $showWorkout) {
             if let day = selectedDay {
                 WorkoutSessionView(
@@ -132,5 +179,20 @@ struct PlanDetailView: View {
                 )
             }
         }
+    }
+
+    private func adaptNextWeek() {
+        let exercises = (try? modelContext.fetch(FetchDescriptor<Exercise>())) ?? []
+        let adaptation = WeeklyAdaptation()
+        adaptation.adaptNextWeek(plan: plan, completedSessions: sessions, exercises: exercises)
+
+        if let currentWeek = plan.currentWeek {
+            let rpeText = currentWeek.averageRPE.map { String(format: "%.1f", $0) } ?? "N/A"
+            let completionText = currentWeek.completionRate.map { "\(Int($0 * 100))%" } ?? "N/A"
+            adaptationMessage = "Next week adjusted based on your performance.\nCompletion: \(completionText) | Avg RPE: \(rpeText)"
+        } else {
+            adaptationMessage = "Next week has been adjusted based on your performance."
+        }
+        showAdaptationAlert = true
     }
 }
