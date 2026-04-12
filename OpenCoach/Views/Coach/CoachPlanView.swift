@@ -102,7 +102,6 @@ struct PlanDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var sessions: [WorkoutSession]
     @State private var selectedDay: TrainingDay?
-    @State private var showWorkout = false
     @State private var showAdaptationAlert = false
     @State private var adaptationMessage = ""
 
@@ -149,7 +148,6 @@ struct PlanDetailView: View {
                 if let week = plan.currentWeek {
                     WeeklyPlanCard(week: week) { day in
                         selectedDay = day
-                        showWorkout = true
                     }
                 }
 
@@ -158,7 +156,6 @@ struct PlanDetailView: View {
                     if week.weekNumber != plan.currentWeekNumber {
                         WeeklyPlanCard(week: week) { day in
                             selectedDay = day
-                            showWorkout = true
                         }
                     }
                 }
@@ -170,14 +167,12 @@ struct PlanDetailView: View {
         } message: {
             Text(adaptationMessage)
         }
-        .fullScreenCover(isPresented: $showWorkout) {
-            if let day = selectedDay {
-                WorkoutOverviewView(
-                    plannedExercises: day.plannedExercises.sorted(by: { $0.orderIndex < $1.orderIndex }),
-                    planWeekNumber: day.week?.weekNumber,
-                    planDayOfWeek: day.dayOfWeek
-                )
-            }
+        .fullScreenCover(item: $selectedDay) { day in
+            WorkoutOverviewView(
+                plannedExercises: day.plannedExercises.sorted(by: { $0.orderIndex < $1.orderIndex }),
+                planWeekNumber: day.week?.weekNumber,
+                planDayOfWeek: day.dayOfWeek
+            )
         }
     }
 
