@@ -107,6 +107,7 @@ struct PostWorkoutView: View {
                     Button("Save") {
                         session.rpe = Int(rpe)
                         session.notes = notes.isEmpty ? nil : notes
+                        try? modelContext.save()
                         onDismiss()
                     }
                     .bold()
