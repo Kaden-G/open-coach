@@ -9,10 +9,12 @@ struct OnboardingFlow: View {
     @State private var trainingDays: Int = 3
     @State private var injuries: Set<InjuryFlag> = []
 
+    private let totalSteps = 5
+
     var body: some View {
         VStack(spacing: 0) {
             // Progress indicator
-            ProgressView(value: Double(currentStep + 1), total: 4)
+            ProgressView(value: Double(currentStep + 1), total: Double(totalSteps))
                 .tint(.orange)
                 .padding(.horizontal)
                 .padding(.top)
@@ -26,6 +28,8 @@ struct OnboardingFlow: View {
                     .tag(2)
                 InjurySelectionView(selected: $injuries)
                     .tag(3)
+                APIKeyOnboardingView()
+                    .tag(4)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .animation(.easeInOut, value: currentStep)
@@ -41,7 +45,7 @@ struct OnboardingFlow: View {
 
                 Spacer()
 
-                if currentStep < 3 {
+                if currentStep < totalSteps - 1 {
                     Button("Next") {
                         currentStep += 1
                     }
@@ -74,6 +78,124 @@ struct OnboardingFlow: View {
         ExerciseSeedData.seedIfNeeded(context: modelContext)
     }
 }
+
+// MARK: - API Key Onboarding Step
+
+struct APIKeyOnboardingView: View {
+    @State private var selectedProvider: LLMProviderType = .openAI
+    @State private var apiKey = ""
+    @State private var isSaved = false
+    @State private var isTesting = false
+    @State private var testResult: String?
+
+    var body: some View {
+        VStack(spacing: 24) {
+            Text("AI-Enhanced Coaching")
+                .font(.title.bold())
+
+            Text("Optionally add your own API key for smarter, LLM-powered training plans. You can always add or change this later in Settings.")
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.secondary)
+                .padding(.horizontal, 16)
+
+            // Provider picker
+            Picker("Provider", selection: $selectedProvider) {
+                ForEach(LLMProviderType.allCases, id: \.self) { provider in
+                    Text(provider.displayName).tag(provider)
+                }
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
+            .onChange(of: selectedProvider) { _, _ in
+                apiKey = ""
+                isSaved = false
+                testResult = nil
+            }
+
+            // Key input
+            VStack(spacing: 12) {
+                SecureField("Paste your \(selectedProvider.displayName) API key", text: $apiKey)
+                    .textContentType(.none)
+                    .autocorrectionDisabled()
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+
+                if isSaved {
+                    Label("Key saved securely in Keychain", systemImage: "checkmark.shield.fill")
+                        .foregroundStyle(.green)
+                        .font(.subheadline)
+                } else if let result = testResult {
+                    Text(result)
+                        .font(.caption)
+                        .foregroundStyle(result.contains("Success") ? .green : .red)
+                }
+            }
+            .padding(.horizontal)
+
+            // Actions
+            HStack(spacing: 12) {
+                Button {
+                    saveAndTest()
+                } label: {
+                    if isTesting {
+                        ProgressView()
+                            .frame(maxWidth: .infinity)
+                    } else {
+                        Text("Save & Test")
+                            .frame(maxWidth: .infinity)
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.orange)
+                .disabled(apiKey.trimmingCharacters(in: .whitespaces).isEmpty || isTesting)
+            }
+            .padding(.horizontal)
+
+            Text("No key? No problem — tap Start Training to use offline rule-based coaching.")
+                .font(.caption)
+                .foregroundStyle(.tertiary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 32)
+
+            Spacer()
+        }
+        .padding(.top)
+    }
+
+    private func saveAndTest() {
+        let trimmedKey = apiKey.trimmingCharacters(in: .whitespaces)
+        guard !trimmedKey.isEmpty else { return }
+
+        try? KeychainHelper.save(key: selectedProvider.keychainKey, value: trimmedKey)
+        isTesting = true
+        testResult = nil
+
+        let config = LLMConfiguration(provider: selectedProvider, apiKey: trimmedKey)
+        let client = LLMClient(config: config)
+
+        Task {
+            do {
+                let response = try await client.send(prompt: "Respond with just the word 'connected'.")
+                await MainActor.run {
+                    testResult = "Success — connected to \(selectedProvider.displayName)"
+                    isSaved = true
+                    isTesting = false
+                }
+            } catch {
+                await MainActor.run {
+                    testResult = "Error: \(error.localizedDescription)"
+                    isSaved = false
+                    isTesting = false
+                    // Remove bad key
+                    KeychainHelper.delete(key: selectedProvider.keychainKey)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Injury Selection
 
 struct InjurySelectionView: View {
     @Binding var selected: Set<InjuryFlag>

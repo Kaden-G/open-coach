@@ -16,8 +16,22 @@ struct SettingsView: View {
                 }
 
                 Section("AI Coach") {
-                    NavigationLink("API Key Configuration") {
+                    NavigationLink {
                         APIKeyConfigView()
+                    } label: {
+                        HStack {
+                            Text("API Key Configuration")
+                            Spacer()
+                            if LLMConfiguration.current != nil {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundStyle(.green)
+                                    .font(.caption)
+                            } else {
+                                Text("Not configured")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
                     }
                 }
 
